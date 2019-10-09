@@ -7,22 +7,31 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
 
-        System.out.println("Enter integer values:  ");
+        System.out.println("Enter integer values to: \n" +
+                "       1. Create an array \n" +
+                "       2. Find minimum number that u entered \n"+
+                "       3. Reverse your Array");
         int[] myIntArray = getArray(5);
         printArray(myIntArray);
        int myMin = findMin(myIntArray);
-        System.out.println("Minimum value entered by the user was: " + myMin);
+        System.out.println("Minimum value entered by the user was: " + myMin + "\n");
+        int[] myReversedArray = reverseArray(myIntArray);
+
+        System.out.println("Reversed Array: " +"\n");
+        printArray(myReversedArray);
+
+
 
 
 
 
     }
-    public static int[] getArray (int count){
+    private static int[] getArray (int count){
 
         int[] array = new int[count];
 
         for (int i = 0; i < array.length; i++) {
-            System.out.println("Enter a " + i + " number: ");
+            System.out.println("Enter a " + (i+1) + " number: ");
             int number = scanner.nextInt();
             scanner.nextLine();
             array[i] = number;
@@ -32,13 +41,13 @@ public class Main {
 
     }
 
-    public static void printArray(int[] array){
+    private static void printArray(int[] array){
         for(int i =0; i<array.length; i++){
             System.out.println("Array element: " + i + " Element value: " + array[i]);
         }
     }
 
-    public static int findMin(int[] array){
+    private static int findMin(int[] array){
 
         int minValue = Integer.MAX_VALUE;
         for(int i =0; i<array.length; i++){
@@ -48,6 +57,18 @@ public class Main {
             }
         }
         return minValue;
+    }
+
+    private static int[] reverseArray(int [] array){
+        int maxIndex = array.length-1;
+        int middleIndex = array.length/2;
+
+
+        for(int i = 0; i<middleIndex; i++){
+            int temp = array[i];
+            array[i] = array[maxIndex-i];
+            array[maxIndex -i] = temp;
+        }return array;
     }
 
             }
